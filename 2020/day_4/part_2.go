@@ -12,8 +12,8 @@ import (
 
 func read_input() []string {
 	// Open input file
-	file, err := os.Open("input_manual_test")
-	// file, err := os.Open("input")
+	// file, err := os.Open("input_manual_test")
+	file, err := os.Open("input")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -95,7 +95,7 @@ func count_valid_passports(passports []map[string]string) int {
 			byr_struct_ok, _ := regexp.MatchString(`^\d{4}$`, byr)
 			iyr_struct_ok, _ := regexp.MatchString(`^\d{4}$`, iyr)
 			eyr_struct_ok, _ := regexp.MatchString(`^\d{4}$`, eyr)
-			hgt_struct_ok, _ := regexp.MatchString(`^(\d{3}cm)|(\d{2}in)$`, hgt)
+			hgt_struct_ok, _ := regexp.MatchString(`^(\d{3}cm|\d{2}in)$`, hgt)
 			hcl_struct_ok, _ := regexp.MatchString(`^#[0-9a-f]{6}$`, hcl)
 			ecl_struct_ok, _ := regexp.MatchString(`^[a-z]{3}$`, ecl)
 			pid_struct_ok, _ := regexp.MatchString(`^\d{9}$`, pid)
@@ -111,7 +111,6 @@ func count_valid_passports(passports []map[string]string) int {
 					hgt_cm, _ := strconv.Atoi(hgt[0:3])
 					hgt_ok = 150 <= hgt_cm && hgt_cm <= 193
 				} else { // in
-				  fmt.Println("plop")
 					hgt_in, _ := strconv.Atoi(hgt[0:2])
 					hgt_ok = 59 <= hgt_in && hgt_in <= 76
 				}
@@ -125,7 +124,7 @@ func count_valid_passports(passports []map[string]string) int {
 					hgt_ok &&
 					ecl_ok {
 
-					fmt.Println(pid)
+					// fmt.Println(pid)
 					count++
 				}
 			}
