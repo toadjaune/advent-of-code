@@ -1,0 +1,115 @@
+# # 0 : Correct input used as variation source
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 1 : pid too short
+# pid:87499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 2 : pid with non-digits
+# pid:08749a704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 3 : pid too long
+# pid:0874997043 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 4 : hgt inch too small
+# pid:087499704 hgt:58in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 5 : hgt inch too big
+# pid:087499704 hgt:77in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 6 : hgt cm too small
+# pid:087499704 hgt:149cm ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 7 : hgt cm too high
+# pid:087499704 hgt:194cm ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 8 : hgt cm too few numbers
+# pid:087499704 hgt:74cm ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 9 : hgt cm too many numbers
+# pid:087499704 hgt:0190cm ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 10 : hgt in too few numbers
+# pid:087499704 hgt:7in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 11 : hgt in too many numbers
+# pid:087499704 hgt:074in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 12 : hgt wrong letters 2 numbers
+# pid:087499704 hgt:74ab ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 13 : hgt wrong letters 3 numbers
+# pid:087499704 hgt:190ab ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 14 : byr too low
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1919 hcl:#623a2f
+#
+# # 15 : byr too high
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:2003 hcl:#623a2f
+#
+# # 16 : byr too short
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:003 hcl:#623a2f
+#
+# # 17 : byr too long
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:02000 hcl:#623a2f
+#
+# # 18 : iyr too low
+# pid:087499704 hgt:74in ecl:grn iyr:2009 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 19 : iyr too high
+# pid:087499704 hgt:74in ecl:grn iyr:2021 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 20 : iyr too short
+# pid:087499704 hgt:74in ecl:grn iyr:201 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 21 : iyr too long
+# pid:087499704 hgt:74in ecl:grn iyr:02012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 22 : eyr too low
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2019 byr:1980 hcl:#623a2f
+#
+# # 23 : eyr too high
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2031 byr:1980 hcl:#623a2f
+#
+# # 24 : eyr too short
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:203 byr:1980 hcl:#623a2f
+#
+# # 25 : eyr too long
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:02030 byr:1980 hcl:#623a2f
+#
+# # 26 : byr with non-numbers
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:198a hcl:#623a2f
+#
+# # 27 : iyr with non-numbers
+# pid:087499704 hgt:74in ecl:grn iyr:2012a eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 28 : eyr with non-numbers
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:a030 byr:1980 hcl:#623a2f
+#
+# # 29 : ecl valid with a suffix
+# pid:087499704 hgt:74in ecl:grna iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 30 : ecl correct length but invalid
+# pid:087499704 hgt:74in ecl:aei iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 31 : ecl substring of a valid value
+# pid:087499704 hgt:74in ecl:gr iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+#
+# # 32 : hcl too long
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2fa
+#
+# # 33 : hcl too short
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2
+#
+# # 34 : hcl invalid hex char
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#62ga2f
+#
+# # 35 : hcl no #
+# pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:4623a2f
+
+# Passport in actual data that was failing my code
+eyr:2023 hcl:#b6652a iyr:2015
+hgt:187in pid:547953710 byr:1979 ecl:grn
+
+
+
+

@@ -12,8 +12,8 @@ import (
 
 func read_input() []string {
 	// Open input file
-	file, err := os.Open("input_short_correct")
-	//file, err := os.Open("input")
+	file, err := os.Open("input_manual_test")
+	// file, err := os.Open("input")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -62,6 +62,12 @@ func parse_passports(rows []string) []map[string]string {
 			passports = append(passports, current_passport)
 			current_passport = make(map[string]string)
 		} else {
+
+			// Allow for comments in input file with #
+			if row[0] == 35 {
+				continue
+			}
+
 			for _, word := range strings.Fields(row) {
 				values := strings.Split(word, ":")
 				current_passport[values[0]] = values[1]
@@ -86,13 +92,13 @@ func count_valid_passports(passports []map[string]string) int {
 		if has_byr && has_iyr && has_eyr && has_hgt && has_hcl && has_ecl && has_pid {
 			// All required fields are present, we move on to field structure validation
 
-			byr_struct_ok, _ := regexp.MatchString(`\d{4}`, byr)
-			iyr_struct_ok, _ := regexp.MatchString(`\d{4}`, iyr)
-			eyr_struct_ok, _ := regexp.MatchString(`\d{4}`, eyr)
-			hgt_struct_ok, _ := regexp.MatchString(`(\d{3}cm)|(\d{2}in)`, hgt)
-			hcl_struct_ok, _ := regexp.MatchString(`#[0-9a-f]{6}`, hcl)
-			ecl_struct_ok, _ := regexp.MatchString(`[a-z]{3}`, ecl)
-			pid_struct_ok, _ := regexp.MatchString(`\d{9}`, pid)
+			byr_struct_ok, _ := regexp.MatchString(`^\d{4}$`, byr)
+			iyr_struct_ok, _ := regexp.MatchString(`^\d{4}$`, iyr)
+			eyr_struct_ok, _ := regexp.MatchString(`^\d{4}$`, eyr)
+			hgt_struct_ok, _ := regexp.MatchString(`^(\d{3}cm)|(\d{2}in)$`, hgt)
+			hcl_struct_ok, _ := regexp.MatchString(`^#[0-9a-f]{6}$`, hcl)
+			ecl_struct_ok, _ := regexp.MatchString(`^[a-z]{3}$`, ecl)
+			pid_struct_ok, _ := regexp.MatchString(`^\d{9}$`, pid)
 
 			if byr_struct_ok && iyr_struct_ok && eyr_struct_ok && hgt_struct_ok && hcl_struct_ok && ecl_struct_ok && pid_struct_ok {
 				// All fields have correct structure, we move on to value validation
@@ -105,6 +111,7 @@ func count_valid_passports(passports []map[string]string) int {
 					hgt_cm, _ := strconv.Atoi(hgt[0:3])
 					hgt_ok = 150 <= hgt_cm && hgt_cm <= 193
 				} else { // in
+				  fmt.Println("plop")
 					hgt_in, _ := strconv.Atoi(hgt[0:2])
 					hgt_ok = 59 <= hgt_in && hgt_in <= 76
 				}
@@ -118,6 +125,7 @@ func count_valid_passports(passports []map[string]string) int {
 					hgt_ok &&
 					ecl_ok {
 
+					fmt.Println(pid)
 					count++
 				}
 			}
@@ -128,10 +136,11 @@ func count_valid_passports(passports []map[string]string) int {
 
 func main() {
 
+	// NB : This code requires the input file to contain an empty line at the end
 	lines := read_input()
 
 	passports := parse_passports(lines)
 
-	fmt.Println(count_valid_passports(passports))
+	fmt.Println("Total : ", count_valid_passports(passports))
 
 }
