@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -36,36 +37,32 @@ func extract_integers(lines []string) (integers []int) {
 	return integers
 }
 
-func has_valid_components(dumped_numbers []int, window_length int, index int) bool {
-	for i := index - window_length; i < index; i++ {
-		for j := i + 1; j < index; j++ {
-			if dumped_numbers[i]+dumped_numbers[j] == dumped_numbers[index] {
-				return true
-			}
+func count_steps(array []int) (int, int) {
+	steps_1 := 0
+	steps_3 := 0
+
+	for i := 0; i < len(array)-1; i++ {
+		if array[i+1]-array[i] == 1 {
+			steps_1++
+		}
+		if array[i+1]-array[i] == 3 {
+			steps_3++
 		}
 	}
-	return false
-}
-
-func find_without_components(dumped_numbers []int, window_size int) int {
-
-	for i := window_size; i < len(dumped_numbers); i++ {
-		if !has_valid_components(dumped_numbers, window_size, i) {
-			return dumped_numbers[i]
-		}
-	}
-	panic("yolo")
+	return steps_1, steps_3
 }
 
 func main() {
 
-	lines := read_input("input_short")
-	window_size := 5
-	// lines := read_input("input")
-	// window_size := 25
+	// lines := read_input("input_short")
+	lines := read_input("input")
 
 	integers := extract_integers(lines)
+	integers = append(integers, 0)
+	sort.Ints(integers)
+	integers = append(integers, integers[len(integers)-1]+3)
+	steps_1, steps_3 := count_steps(integers)
 
-	fmt.Println(find_without_components(integers, window_size))
+	fmt.Println(steps_1 * steps_3)
 
 }
